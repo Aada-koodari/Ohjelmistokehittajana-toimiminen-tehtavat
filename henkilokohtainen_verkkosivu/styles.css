@@ -17,14 +17,15 @@ footer {
 .menu {
   float: left;
   text-align: center;
-  width: 130px;
+  width: auto;
   position: fixed;
   z-index: 1;
-  top: 112px;
+  top: 20%;
   left: 10px;
   background: #797979;
   overflow-x: hidden;
   padding: 8px 0;
+  font-size: 1vw;
 }
 
 .menu a:link {
