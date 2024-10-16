@@ -33,12 +33,14 @@ body {
   .menu {
     float: left;
     width: 10%;
+    height: 432px;
+    border: 1px solid black;
+    margin-top: 5px;
   }
 
   .menuitem {
     padding: 8px;
     margin-top: 7px;
-    border-bottom: 1px solid #f1f1f1;
     text-align: center;
   }
   
@@ -59,7 +61,7 @@ body {
   @media only screen and (max-width:1266px) {
     /* For tablets: */
     .menu {
-        width: 10%;
+        width: 12%;
     }
     .main {
       width: 80%;
@@ -69,14 +71,17 @@ body {
       width: 95%;
     }
   }
-  @media only screen and (max-width:600px) {
+  @media only screen and (max-width:725px) {
     /* For mobile phones: */
-    .menu, .main, .right {
+    .main, .right {
       width: 90%;
       float: left;
     }
     .menu {
-        overflow: hidden;
+      width: 98%;
+      float: left;
+      overflow: hidden;
+      height: auto;
     }
     .menuitem {
         float: left;
