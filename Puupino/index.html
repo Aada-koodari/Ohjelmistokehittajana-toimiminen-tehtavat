@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puupinon Laskuri</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h2>Puupino</h2>
+</header>
+
+<form>
+
+    <label for="pituus">Pituus (m):</label>
+    <br>
+    <input type="number" id="pituus" step="0.01" required>
+    <br>
+
+    <label for="korkeus">Korkeus (m):</label>
+    <br>
+    <input type="number" id="korkeus" step="0.01" required>
+    <br>
+
+    <label for="syvyys">Syvyys (m):</label>
+    <br>
+    <input type="number" id="syvyys" step="0.01" required>
+    <br>
+
+    <button type="button" onclick="laskeTilavuus()">Laske puuaineksen määrä</button>
+
+</form>
+
+<div id="tulos"></div>
+
+<script src="index.js"></script>
+
+</body>
+</html>
+
