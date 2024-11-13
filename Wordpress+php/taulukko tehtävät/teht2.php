@@ -6,38 +6,34 @@
 <body>
 
 <form method="post">
-        <input type="submit" name="a-ö"
-                value="a-ö"/>
-        
-        <input type="submit" name="ö-a"
-                value="ö-a"/>
-    </form>
-
-</body>
-</html>
+    <input type="submit" name="a-ö" value="a-ö"/>
+    <input type="submit" name="ö-a" value="ö-a"/>
+</form>
 
 <?php
-$auto = array("merkki" => "merkki", "malli" => "malli", "vuosi" => 1894);
-if(isset($_POST['a-ö'])) {
-    function sortArray($auto)
-    {
-        $tiedot1 = "";
-        $merkki = $auto["merkki"];
-        $malli = $auto["malli"];
-        $vuosi = $auto["vuosi"];
-        echo "auton tiedot: ", $merkki, ", ", $malli, ", ", $vuosi;
-    };
-}
-if(isset($_POST['ö-a'])) {
-    function reverseArray($auto)
-    {
-        $tiedot2 = "";
-        $merkki = $auto["merkki"];
-        $malli = $auto["malli"];
-        $vuosi = $auto["vuosi"];
-        echo "auton tiedot: ", $vuosi, ", ", $malli, ", ", $merkki;
-    };
-}
+// Auton tiedot
+$auto = array(
+    "merkki" => "Ford",
+    "malli" => "Mustang",
+    "vuosi" => 1964
+);
 
-echo "auton tiedot: ";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['a-ö'])) {
+        ksort($auto); // Järjestä a-ö avainten mukaan
+        echo "<h3>Auton tiedot a-ö:</h3>";
+    } elseif (isset($_POST['ö-a'])) {
+        krsort($auto); // Järjestä ö-a avainten mukaan
+        echo "<h3>Auton tiedot ö-a:</h3>";
+    }
+
+    // Tulosta auton tiedot
+    echo "<ul>";
+    foreach ($auto as $avain => $arvo) {
+        echo "<li><strong>$avain</strong>: $arvo</li>";
+    }
+    echo "</ul>";
+}
 ?>
+</body>
+</html>
