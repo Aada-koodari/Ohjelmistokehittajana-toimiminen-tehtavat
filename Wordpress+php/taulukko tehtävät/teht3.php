@@ -6,8 +6,10 @@
 <body>
 <h3>Oppilaiden tiedot:</h3>
 <form method="post">
-    <input type="submit" name="sort" value="Nimi"/>
-    <input type="submit" name="sort" value="Keskiarvo"/>
+    <input type="submit" name="sort" value="Nimi a-ö"/>
+    <input type="submit" name="sort" value="Nimi ö-a"/>
+    <input type="submit" name="sort" value="Keskiarvo a-ö"/>
+    <input type="submit" name="sort" value="Keskiarvo ö-a"/>
 </form>
 
 </body>
@@ -31,15 +33,24 @@ unset($student); // Poistetaan viite viimeisestä elementistä
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['sort'])) {
         $sort = $_POST['sort'];
-        if ($sort == "Nimi") {
+        if ($sort == "Nimi a-ö") {
             // Lajitellaan nimen mukaan
             usort($students, function($a, $b) {
                 return strcmp($a['nimi'], $b['nimi']);
             });
-        } elseif ($sort == "Keskiarvo") {
+        } elseif ($sort == "Nimi ö-a") {
+            uasort($students, function($b, $a) {
+                return strcmp($b['nimi'], $a['nimi']);
+            });
+        } elseif ($sort == "Keskiarvo a-ö") {
             // Lajitellaan keskiarvon mukaan
             usort($students, function($a, $b) {
                 return $b['keskiarvo'] <=> $a['keskiarvo'];
+            });
+        } elseif ($sort == "Keskiarvo ö-a") {
+            // Lajitellaan keskiarvon mukaan
+            uasort($students, function($b, $a) {
+                return $a['keskiarvo'] <=> $b['keskiarvo'];
             });
         }
     }

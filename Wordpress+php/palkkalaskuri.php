@@ -41,9 +41,9 @@ $Prosentti = $_GET["prosentti"] / 100;
 $Palkka = $_GET["palkka"];
 $ageText = "";
 
-if (isset($_GET["woman"])) {
-    if ($Age > 13) {
-        $ageText = "Mitä Neiti";
+if ($Gender === "woman") {
+    if ($Age < 13) {
+        $ageText = "Mitä neiti";
     }
     elseif (13 <= $Age && $Age <= 25) {
         $ageText = "Mitä nuorineiti";
@@ -55,8 +55,8 @@ if (isset($_GET["woman"])) {
         $ageText = "Olet jo eläke iässä";
     }
 }
-elseif (isset($_GET["man"])) {
-    if ($Age > 13) {
+elseif ($Gender === "man") {
+    if ($Age < 13) {
         $ageText = "Mitä poitsu";
     }
     elseif (13 <= $Age && $Age <= 25) {
@@ -85,7 +85,7 @@ else {
 };
 
 
-$brutto = $Palkka * 12.5;
+$brutto = $Palkka;
 $netto = $brutto - ($Prosentti * $brutto);
 
 echo "Hei " . $Name. ", " . $ageText. ". Bruttopalkkasi on " . $brutto . " eur ja nettopalkkasi on " . $netto . " eur.";
