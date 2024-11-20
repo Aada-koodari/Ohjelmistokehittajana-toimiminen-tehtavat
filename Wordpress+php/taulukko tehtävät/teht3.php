@@ -34,23 +34,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['sort'])) {
         $sort = $_POST['sort'];
         if ($sort == "Nimi a-ö") {
-            // Lajitellaan nimen mukaan
+            // Lajitellaan nimen mukaan a-ö
             usort($students, function($a, $b) {
                 return strcmp($a['nimi'], $b['nimi']);
             });
         } elseif ($sort == "Nimi ö-a") {
-            uasort($students, function($b, $a) {
+            // Lajitellaan nimen mukaan ö-a
+            usort($students, function($a, $b) {
                 return strcmp($b['nimi'], $a['nimi']);
             });
         } elseif ($sort == "Keskiarvo a-ö") {
-            // Lajitellaan keskiarvon mukaan
+            // Lajitellaan keskiarvon mukaan nouseva
             usort($students, function($a, $b) {
-                return $b['keskiarvo'] <=> $a['keskiarvo'];
+                return $a['keskiarvo'] <=> $b['keskiarvo'];
             });
         } elseif ($sort == "Keskiarvo ö-a") {
-            // Lajitellaan keskiarvon mukaan
-            uasort($students, function($b, $a) {
-                return $a['keskiarvo'] <=> $b['keskiarvo'];
+            // Lajitellaan keskiarvon mukaan laskeva
+            usort($students, function($a, $b) {
+                return $b['keskiarvo'] <=> $a['keskiarvo'];
             });
         }
     }
