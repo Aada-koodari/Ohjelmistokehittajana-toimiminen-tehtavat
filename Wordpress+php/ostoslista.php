@@ -10,11 +10,24 @@ if (!isset($_SESSION["tuotteet"])) {
     <head>
         <title>Eka PHP-sivu</title>
     </head>
+
+    <style>
+        body {
+            background-color: #FCFCFC;
+            color: #353F4B;
+        }
+        input {
+            background-color: #CAC1CD;
+            color: #13171B;
+        }
+
+    </style>
 <body>
 
     <form action="" method="GET">
-        Tuote: <input type="text" name="tuoteNimi">
-        Määrä: <input type="number" name="tuoteMäärä">
+        Tuote: <input type="text" name="tuoteNimi" placeholder="Tuotteen nimi">
+        Määrä: <input type="number" name="tuoteMäärä" placeholder="Tuotteen määrä">
+        <br>
         <br>
         <input type="submit" name="lisää" value="lisää">
         <input type="submit" name="poista" value="poista">
@@ -29,27 +42,52 @@ if (!isset($_SESSION["tuotteet"])) {
 $tuotteet = $_SESSION['tuotteet'];
 
 if (isset($_GET["lisää"])) {
-    $_SESSION['tuotteet'][] = ["nimi" => $_GET["tuoteNimi"], "määrä" => $_GET["tuoteMäärä"]];
-    //array_push($tuotteet, array());
-    //$lista = $_SESSION['tuotteet'];
-    
+    $nimi = $_GET["tuoteNimi"];
+    $määrä = intval($_GET["tuoteMäärä"]);
+    $_SESSION['tuotteet'][] = ["nimi" => $nimi, "määrä" => $määrä];
 };
+
 if (isset($_GET["poista"])) {
-    $key = array_search($_GET["tuoteNimi"], $tuotteet);
-    unset($_SESSION['tuotteet'][$key + 1]);
-    
+    $nimi = $_GET["tuoteNimi"];
+    foreach ($_SESSION['tuotteet'] as $key => $tuote) {
+        if ($tuote['nimi'] === $nimi) {
+            unset($_SESSION['tuotteet'][$key]);
+            $_SESSION['tuotteet'] = array_values($_SESSION['tuotteet']);
+            break;
+        }}
 };
+
 if (isset($_GET["poistaKaikki"])) {
     session_destroy();
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
     
 };
+
 if (isset($_GET["hae"])) {
-    array_push($tuotteet, array("nimi" => $_GET["tuoteNimi"], "määrä" => $_GET["tuoteMäärä"]));
-    
+    $nimi = $_GET["tuoteNimi"];
+    $määrä = intval($_GET["tuoteMäärä"]);
+    $löyty = false;
+    foreach ($_SESSION['tuotteet'] as $key => $tuote) {
+        if ($tuote['nimi'] === $nimi) {
+            echo "<br>" . htmlspecialchars($tuote["nimi"]) . " - " . intval($tuote["määrä"]) . " kpl";
+            $löyty = true;
+            break;
+        }
+    }
+    if (!$löyty) {
+        echo "<br>Tuotetta " . htmlspecialchars($nimi) . " ei löytynyt. :(<br>";
+    }
 };
-foreach ($tuotteet as $tuoteTiedot) {
-    echo $tuoteTiedot["nimi"] . " x" . $tuoteTiedot["määrä"] . "<br>";
-};
+
+if (!empty($_SESSION['tuotteet'])) {
+    echo "<h3>Ostoslista:</h3>";
+    foreach ($_SESSION['tuotteet'] as $tuote) {
+        echo htmlspecialchars($tuote["nimi"]) . " - " . intval($tuote["määrä"]) . " kpl<br>";
+    }
+} else {
+    echo "<h3>Ostoslista on tyhjä.</h3>";
+}
 
 //ostoslista tuote = echo $tuote . " x" . $määrä;
 
