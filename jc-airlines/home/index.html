@@ -22,19 +22,23 @@
 <img src="../pictures/background.png" width="100%" height="auto">
 
 <div style="overflow:auto">
-    <form>
-        <label for="destination">To: </label>
-        <select name="destination" id="destination">
-            <option value="helsinki">Helsinki</option>
-            <option value="arlanda">Arlanda</option>
-            <option value="oslo">Oslo</option>
-            <option value="keflavik">Keflavik</option>
-        </select>
+    <form class="fastTravel">
+        <div class="fast1">
+          <span for="destination" style="padding-right: 20px;">To: </span>
+          <select name="destination" id="destination" class="inputs">
+              <option value="" disabled selected>Select your option</option>
+              <option value="helsinki">Helsinki</option>
+              <option value="arlanda">Arlanda</option>
+              <option value="oslo">Oslo</option>
+              <option value="keflavik">Keflavik</option>
+          </select>
+          <span for="when">Date: </span>
+          <input type="date" id="when" name="when" class="inputs">
+        </div>
         <br>
-        <label for="when">Date: </label>
-        <input type="date" id="when" name="when">
-        <br>
-        <input type="submit">
+        <div class="fast2">
+          <input type="submit" id="submit" class="SUBMIT">
+        </div>
     </form>
   
   <div class="container">
@@ -77,8 +81,32 @@
 </div>
 </body>
 <footer>
-    <img src="../pictures/logo+name.png" alt="logo and name">
-    <p>© 2024 – JC-Airlines</p>
+    <div class="row">
+      <div class="column">
+        <img src="../pictures/logo+name.png" alt="logo and name" style="height: auto;width: 90%;">
+        <h3>Contact</h3>
+        <img src="../pictures/call_us.png" style="float: left">
+        <p name="phoneNumb" id="phoneNumb">+354 08433443</p>
+        <br>
+        <img src="../pictures/where.png" style="float: left">
+        <p name="where" id="where">Tikkakoski, Finland</p>
+      </div>
+      <div class="column" style="text-align: center;">
+        <h3>Discover</h3>
+        <p>Flights</p>
+        <p>Shops</p>
+        <p>Dining</p>
+      </div>
+      <div class="column" style="text-align: center;">
+        <h3>Company</h3>
+        <p>History</p>
+        <p>Planes</p>
+        <p>Awards</p>
+      </div>
+      <div class="columnr">
+        <p>© 2024 – JC-Airlines</p>
+      </div>
+    </div>
 </footer>
 </html>
 

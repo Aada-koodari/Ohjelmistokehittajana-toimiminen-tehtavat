@@ -7,9 +7,42 @@
     font-family:Verdana;
   }
 
+  footer {
+    height: auto;
+  }
+
   header {
     background-color:#f1f1f1;
     padding:15px;
+  }
+
+  .fastTravel {
+    float: right;
+    width: 20%;
+    height: auto;
+    background-color: #CCD1E6;
+    border-radius: 20px;
+    padding: 15px;
+    color: #000000;
+  }
+
+  .SUBMIT {
+    background-color: #4F6082;
+    border-radius: 10px;
+    padding: 15px;
+    color: #ffff;
+  }
+
+  .fast1 {
+    text-align: left;
+  }
+
+  .fast2 {
+    text-align: center;
+  }
+
+  .inputs {
+    width: 75%;
   }
 
   .menu {
@@ -61,6 +94,29 @@
     float: left;
     width: 33.33333%;
     padding: 20px;
+  }
+
+  /* Create three equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 28%;
+    padding: 10px;
+  }
+  
+  .columnr {
+    color: #A0A0A0;
+    right: 0;
+    bottom: 0;
+    float: left;
+    width: 15%;
+    padding: 10px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
   }
   
   .large-font {
